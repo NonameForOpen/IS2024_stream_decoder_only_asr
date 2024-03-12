@@ -1,0 +1,7 @@
+#!/bin/bash
+
+export PYTHONPATH=./
+
+python wenet/bin/recognize.py --gpu -1 --mode attention --config /home/storage/asr_xd02_storage/disk7/chenpeikun/workspace/model/libri100_stream_step1k_3e-4_tokenmask02_85122048_neg05_dropout01_nofullmask_woeos/train.yaml --data_type raw --test_data ../data_for_decoder_only/test_wavlm2k_dev_other_mix.list --beam_size 10 --batch_size 1 --penalty 0.0 --dict /home/storage/asr_xd02_storage/disk7/chenpeikun/workspace/data_for_decoder_only/dict/libri_2k --ctc_weight 0.5 --reverse_weight 0.0 --result_file /home/storage/asr_xd02_storage/disk7/chenpeikun/workspace/model/text --checkpoint /home/storage/asr_xd02_storage/disk7/chenpeikun/workspace/model/libri100_stream_step1k_3e-4_tokenmask02_85122048_neg05_dropout01_-1/avg_10.pt
+
+python wenet/bin/train.py --gpu -1 --config conf/train_small_conformer2k.yaml --data_type raw --symbol_table /home/storage/asr_xd02_storage/disk7/chenpeikun/workspace/data_for_decoder_only/dict/libri_2k --train_data /home/storage/asr_xd02_storage/disk7/chenpeikun/workspace/data_for_decoder_only/train_wavlm2k_mix_noblk.list_100 --cv_data /home/storage/asr_xd02_storage/disk7/chenpeikun/workspace/data_for_decoder_only/dev_wavlm2k_mix_noblk.list --bpe_model /home/storage/asr_xd02_storage/disk7/chenpeikun/workspace/data_for_decoder_only/dict/train_2000.model --model_dir /home/storage/asr_xd02_storage/disk7/chenpeikun/workspace/model/libri100_nostream_step1k_3e-4_tokenmask02_85122048_neg05 --num_workers 1
